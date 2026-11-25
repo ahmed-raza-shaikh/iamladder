@@ -11,6 +11,7 @@
   <a href="#what-it-finds"><img alt="24 escalation paths" src="https://img.shields.io/badge/escalation_paths-24-11141C?style=flat-square"></a>
   <a href="#accuracy-and-performance"><img alt="10k identities in 49 ms" src="https://img.shields.io/badge/10k_identities-49_ms-11141C?style=flat-square"></a>
   <a href="#use-it-as-a-ci-gate"><img alt="CI gate" src="https://img.shields.io/badge/CI-gate-11141C?style=flat-square"></a>
+  <a href="https://crates.io/crates/iamladder"><img alt="crates.io" src="https://img.shields.io/crates/v/iamladder?style=flat-square&color=11141C"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-11141C?style=flat-square"></a>
 </p>
 
@@ -37,7 +38,7 @@
 ## Quick start
 
 ```bash
-cargo install --git https://github.com/ahmed-raza-shaikh/iamladder
+cargo install iamladder
 
 # Read-only export; needs iam:GetAccountAuthorizationDetails
 aws iam get-account-authorization-details --output json > auth.json
