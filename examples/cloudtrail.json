@@ -1,0 +1,14 @@
+{
+  "Records": [
+    { "eventSource": "s3.amazonaws.com", "eventName": "PutObject", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/build-bot" }, "resources": [{ "ARN": "arn:aws:s3:::artifacts-prod/builds/app.tar.gz" }] },
+    { "eventSource": "s3.amazonaws.com", "eventName": "PutObject", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/build-bot" }, "resources": [{ "ARN": "arn:aws:s3:::artifacts-prod/builds/app.sha256" }] },
+    { "eventSource": "ec2.amazonaws.com", "eventName": "DescribeInstances", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/build-bot" } },
+    { "eventSource": "s3.amazonaws.com", "eventName": "DeleteObject", "errorCode": "AccessDenied", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/build-bot" } },
+    { "eventSource": "dynamodb.amazonaws.com", "eventName": "GetItem", "userIdentity": { "type": "AssumedRole", "arn": "arn:aws:sts::111122223333:assumed-role/app-backend/i-0abc", "sessionContext": { "sessionIssuer": { "type": "Role", "arn": "arn:aws:iam::111122223333:role/app-backend" } } }, "resources": [{ "ARN": "arn:aws:dynamodb:us-east-1:111122223333:table/orders" }] },
+    { "eventSource": "dynamodb.amazonaws.com", "eventName": "PutItem", "userIdentity": { "type": "AssumedRole", "arn": "arn:aws:sts::111122223333:assumed-role/app-backend/i-0abc", "sessionContext": { "sessionIssuer": { "type": "Role", "arn": "arn:aws:iam::111122223333:role/app-backend" } } }, "resources": [{ "ARN": "arn:aws:dynamodb:us-east-1:111122223333:table/orders" }] },
+    { "eventSource": "sqs.amazonaws.com", "eventName": "SendMessage", "userIdentity": { "type": "AssumedRole", "arn": "arn:aws:sts::111122223333:assumed-role/app-backend/i-0abc", "sessionContext": { "sessionIssuer": { "type": "Role", "arn": "arn:aws:iam::111122223333:role/app-backend" } } } },
+    { "eventSource": "athena.amazonaws.com", "eventName": "StartQueryExecution", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/analyst" } },
+    { "eventSource": "athena.amazonaws.com", "eventName": "GetQueryResults", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/analyst" } },
+    { "eventSource": "s3.amazonaws.com", "eventName": "GetObject", "userIdentity": { "type": "IAMUser", "arn": "arn:aws:iam::111122223333:user/analyst" }, "resources": [{ "ARN": "arn:aws:s3:::athena-results/q1.csv" }] }
+  ]
+}

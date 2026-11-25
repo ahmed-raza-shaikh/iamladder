@@ -1,0 +1,106 @@
+{
+  "UserDetailList": [
+    {
+      "UserName": "alice-admin",
+      "Arn": "arn:aws:iam::111122223333:user/alice-admin",
+      "CreateDate": "2023-02-10T09:00:00Z",
+      "GroupList": ["Admins"]
+    },
+    {
+      "UserName": "build-bot",
+      "Arn": "arn:aws:iam::111122223333:user/build-bot",
+      "CreateDate": "2024-06-01T09:00:00Z",
+      "UserPolicyList": [
+        {
+          "PolicyName": "deploy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              { "Effect": "Allow", "Action": ["iam:PassRole", "ec2:RunInstances", "ec2:DescribeInstances"], "Resource": "*" },
+              { "Effect": "Allow", "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject", "s3:ListBucket"], "Resource": "*" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "analyst",
+      "Arn": "arn:aws:iam::111122223333:user/analyst",
+      "CreateDate": "2025-01-15T09:00:00Z",
+      "AttachedManagedPolicies": [
+        { "PolicyName": "AnalystReadOnly", "PolicyArn": "arn:aws:iam::111122223333:policy/AnalystReadOnly" }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "GroupName": "Admins",
+      "AttachedManagedPolicies": [
+        { "PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess" }
+      ]
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "RoleName": "app-backend",
+      "Arn": "arn:aws:iam::111122223333:role/app-backend",
+      "CreateDate": "2024-03-01T09:00:00Z",
+      "RoleLastUsed": { "LastUsedDate": "2026-11-20T12:00:00Z" },
+      "RolePolicyList": [
+        {
+          "PolicyName": "app",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              { "Effect": "Allow", "Action": "dynamodb:*", "Resource": "*" },
+              { "Effect": "Allow", "Action": ["sqs:SendMessage", "sqs:ReceiveMessage", "sqs:DeleteMessage"], "Resource": "*" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "RoleName": "legacy-etl",
+      "Arn": "arn:aws:iam::111122223333:role/legacy-etl",
+      "CreateDate": "2022-05-01T09:00:00Z",
+      "RoleLastUsed": { "LastUsedDate": "2024-01-03T08:00:00Z" },
+      "AttachedManagedPolicies": [
+        { "PolicyName": "EtlPolicy", "PolicyArn": "arn:aws:iam::111122223333:policy/EtlPolicy" }
+      ]
+    }
+  ],
+  "Policies": [
+    {
+      "PolicyName": "AnalystReadOnly",
+      "Arn": "arn:aws:iam::111122223333:policy/AnalystReadOnly",
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              { "Effect": "Allow", "Action": ["athena:StartQueryExecution", "athena:GetQueryResults", "s3:GetObject"], "Resource": "*" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "EtlPolicy",
+      "Arn": "arn:aws:iam::111122223333:policy/EtlPolicy",
+      "PolicyVersionList": [
+        {
+          "VersionId": "v3",
+          "IsDefaultVersion": true,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              { "Effect": "Allow", "Action": ["glue:*", "iam:PassRole", "s3:*"], "Resource": "*" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
