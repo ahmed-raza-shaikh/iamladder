@@ -1,8 +1,8 @@
 use criterion::{Criterion, Throughput, criterion_group, criterion_main};
-use iam_risk_intel::analyze::{Options, analyze};
-use iam_risk_intel::cloudtrail::Usage;
-use iam_risk_intel::model::{Grant, Principal, PrincipalKind};
-use iam_risk_intel::policy::Statement;
+use iamladder::analyze::{Options, analyze};
+use iamladder::cloudtrail::Usage;
+use iamladder::model::{Grant, Principal, PrincipalKind};
+use iamladder::policy::Statement;
 use std::hint::black_box;
 
 const STATEMENTS: [&str; 6] = [

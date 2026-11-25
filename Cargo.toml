@@ -1,7 +1,16 @@
 [package]
-name = "iam-risk-intel"
+name = "iamladder"
 version = "0.1.0"
 edition = "2024"
+description = "AWS IAM privilege-escalation path finder and least-privilege policy generator from CloudTrail."
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/ahmed-raza-shaikh/iamladder"
+homepage = "https://github.com/ahmed-raza-shaikh/iamladder"
+keywords = ["aws", "iam", "least-privilege", "cloud-security", "cloudtrail"]
+categories = ["command-line-utilities", "development-tools"]
+authors = ["Ahmed Raza Shaikh"]
+exclude = ["assets/*", "target/*"]
 
 [dependencies]
 anyhow = "1"

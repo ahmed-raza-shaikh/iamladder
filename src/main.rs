@@ -1,7 +1,7 @@
 use anyhow::Context;
 use clap::{Parser, Subcommand, ValueEnum};
-use iam_risk_intel::analyze::{Options, Severity, days_from_iso};
-use iam_risk_intel::{eval, leastpriv, llm, report};
+use iamladder::analyze::{Options, Severity, days_from_iso};
+use iamladder::{eval, leastpriv, llm, report};
 use std::path::PathBuf;
 use std::process::ExitCode;
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -109,7 +109,7 @@ fn main() -> anyhow::Result<ExitCode> {
                 now_days,
                 dormant_days,
             };
-            let (report, _) = iam_risk_intel::run(&auth, &cloudtrail, opts)?;
+            let (report, _) = iamladder::run(&auth, &cloudtrail, opts)?;
             match format {
                 Format::Json => println!("{}", serde_json::to_string_pretty(&report)?),
                 Format::Markdown => print!("{}", report::markdown(&report, min_score)),
@@ -142,7 +142,7 @@ fn main() -> anyhow::Result<ExitCode> {
             cloudtrail,
             principal,
         } => {
-            let usage = iam_risk_intel::load_usage(&cloudtrail)?.unwrap_or_default();
+            let usage = iamladder::load_usage(&cloudtrail)?.unwrap_or_default();
             let used = usage.by_principal.get(&principal).with_context(|| {
                 format!("no successful activity for {principal} in the supplied CloudTrail")
             })?;

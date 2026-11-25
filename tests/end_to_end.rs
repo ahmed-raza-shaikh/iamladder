@@ -1,5 +1,5 @@
-use iam_risk_intel::analyze::{Options, days_from_iso};
-use iam_risk_intel::{eval, leastpriv};
+use iamladder::analyze::{Options, days_from_iso};
+use iamladder::{eval, leastpriv};
 use std::path::Path;
 
 fn opts() -> Options {
@@ -11,7 +11,7 @@ fn opts() -> Options {
 
 #[test]
 fn example_account_is_ranked_correctly() {
-    let (report, _) = iam_risk_intel::run(
+    let (report, _) = iamladder::run(
         Path::new("examples/authorization-details.json"),
         &["examples/cloudtrail.json"],
         opts(),
@@ -38,7 +38,7 @@ fn example_account_is_ranked_correctly() {
 
 #[test]
 fn least_privilege_drops_denied_and_unused_actions() {
-    let usage = iam_risk_intel::load_usage(&["examples/cloudtrail.json"])
+    let usage = iamladder::load_usage(&["examples/cloudtrail.json"])
         .unwrap()
         .unwrap();
     assert_eq!(usage.denied, 1);
